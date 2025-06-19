@@ -115,20 +115,32 @@
             if ($registerActions.length > 0) {
                 $registerActions.append(buttonHtml);
             }
-        },
-
-        // Hook into existing print functionality
+        },        // Hook into existing print functionality
         hookIntoPrintEvents: function() {
             var self = this;
-            var originalPrint = window.print;
 
-            // Override window.print to trigger cash drawer
-            window.print = function() {
-                if (self.config.autoOpen) {
-                    self.openDrawer();
-                }
-                originalPrint.call(window);
-            };
+            // Check if fullscreen print manager is available
+            if (typeof window.YithPosFullscreenPrint !== 'undefined') {
+                // Hook into fullscreen print events
+                $(document).on('yith-pos-print-completed', function() {
+                    if (self.config.autoOpen) {
+                        setTimeout(function() {
+                            self.openDrawer();
+                        }, 100);
+                    }
+                });
+            } else {
+                // Fallback to original print interceptor
+                var originalPrint = window.print;
+
+                // Override window.print to trigger cash drawer
+                window.print = function() {
+                    if (self.config.autoOpen) {
+                        self.openDrawer();
+                    }
+                    originalPrint.call(window);
+                };
+            }
 
             // Hook into React component events if available
             if (window.wp && window.wp.hooks) {

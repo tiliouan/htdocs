@@ -101,6 +101,9 @@ if ( ! class_exists( 'YITH_POS' ) ) {
 			require_once YITH_POS_INCLUDES_PATH . 'class-yith-pos-register-sessions.php';			require_once YITH_POS_INCLUDES_PATH . 'integrations/class.yith-pos-integrations.php';			// Cash drawer functionality
 			require_once YITH_POS_INCLUDES_PATH . 'class.yith-pos-cash-drawer.php';
 			require_once YITH_POS_INCLUDES_PATH . 'yith-pos-receipt-escpos.php';
+			
+			// Fullscreen print functionality
+			require_once YITH_POS_INCLUDES_PATH . 'class.yith-pos-fullscreen-print.php';
 
 			// Gateways classes.
 			require_once YITH_POS_INCLUDES_PATH . 'gateways/class.yith-pos-payment-gateway-cache.php';

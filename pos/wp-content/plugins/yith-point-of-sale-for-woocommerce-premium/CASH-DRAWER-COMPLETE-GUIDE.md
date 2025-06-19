@@ -11,6 +11,8 @@ This comprehensive module provides automatic cash drawer opening functionality f
 - **Test Functionality**: Built-in testing to verify setup
 - **ESC/POS Compatible**: Works with standard ESC/POS printers and cash drawers
 - **Multi-Browser Support**: Works across different browsers with fallback methods
+- **Fullscreen Print Management**: Prevents Chrome from exiting fullscreen mode during printing
+- **Kiosk Mode Support**: Maintains fullscreen mode for POS kiosk operations
 - **Security**: Proper nonce validation and capability checks
 - **Customizable**: Hooks and filters for developers
 
@@ -53,6 +55,36 @@ This comprehensive module provides automatic cash drawer opening functionality f
    - Check browser console for any errors
    - Enable test mode for debugging if needed
 
+## Fullscreen Print Management
+
+### The Chrome Fullscreen Issue
+One critical challenge with browser-based POS systems is that Chrome's print dialog automatically exits fullscreen mode. This breaks the kiosk workflow by allowing users to access the desktop and other applications. Our solution addresses this by implementing intelligent print methods that preserve fullscreen mode.
+
+### How It Works
+The fullscreen print management system:
+1. **Detects Fullscreen State**: Monitors when the POS is in fullscreen mode
+2. **Intercepts Print Calls**: Captures `window.print()` calls and print button clicks
+3. **Smart Print Method Selection**: Chooses the best printing approach for the browser
+4. **Fullscreen Preservation**: Uses iframe or popup methods that don't exit fullscreen
+5. **Automatic Restoration**: Restores fullscreen mode if it's accidentally lost
+
+### Available Print Methods
+- **IFrame Method**: Creates an invisible iframe for printing (best for Chrome/Edge)
+- **Popup Method**: Uses a popup window for printing (fallback option)
+- **Direct Method**: Standard print with fullscreen restoration
+- **Auto Method**: Automatically selects the best method for the browser
+
+### Configuration Options
+Navigate to **WordPress Admin → YITH POS → Cash Drawer → Fullscreen Print Settings**:
+
+- **Enable Fullscreen Print**: Master toggle for the functionality
+- **Preserve Fullscreen Mode**: Automatically restore fullscreen after printing
+- **Print Method**: Choose specific method or let system auto-detect
+- **Print Delay**: Delay before showing print dialog (helps with timing issues)
+- **Restore Delay**: Delay before attempting fullscreen restoration
+- **Show Notifications**: Display status messages during printing
+- **Debug Mode**: Enable detailed logging for troubleshooting
+
 ## Technical Implementation
 
 ### File Structure
@@ -60,13 +92,16 @@ This comprehensive module provides automatic cash drawer opening functionality f
 wp-content/plugins/yith-point-of-sale-for-woocommerce-premium/
 ├── includes/
 │   ├── class.yith-pos-cash-drawer.php          # Main cash drawer class
-│   ├── class.yith-pos-cash-drawer-admin.php    # Admin interface
+│   ├── class.yith-pos-fullscreen-print.php     # Fullscreen print management
 │   └── yith-pos-receipt-escpos.php             # ESC/POS integration
 ├── assets/
 │   ├── js/yith-pos-cash-drawer.js              # Frontend JavaScript
-│   └── css/yith-pos-cash-drawer.css            # Styling
-├── cash-drawer-documentation.md                # This documentation
-└── test-cash-drawer.php                        # Test interface
+│   ├── js/yith-pos-fullscreen-print.js         # Fullscreen print manager
+│   ├── css/yith-pos-cash-drawer.css            # Styling
+│   └── css/yith-pos-fullscreen-print.css       # Fullscreen print styles
+├── CASH-DRAWER-COMPLETE-GUIDE.md               # This documentation
+├── test-cash-drawer.php                        # Cash drawer test interface
+└── test-fullscreen-print.php                   # Fullscreen print test interface
 ```
 
 ### Core Classes
