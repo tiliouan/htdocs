@@ -1,0 +1,256 @@
+/**
+ * Additional CSS for message notifications and responsive improvements
+ */
+
+/* Message Notifications */
+.pos-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 300px;
+}
+
+.pos-message.show {
+    transform: translateX(0);
+}
+
+.pos-message-info {
+    background: #17a2b8;
+}
+
+.pos-message-success {
+    background: #28a745;
+}
+
+.pos-message-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.pos-message-error {
+    background: #dc3545;
+}
+
+/* Touch Device Enhancements */
+.touch-device .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.touch-target.touching {
+    opacity: 0.8;
+    transform: scale(0.98);
+}
+
+/* Connection Status Indicator */
+.connection-status {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    z-index: 10000;
+    transition: all 0.3s ease;
+}
+
+.connection-status.online {
+    background: #28a745;
+    color: #fff;
+}
+
+.connection-status.offline {
+    background: #dc3545;
+    color: #fff;
+}
+
+/* Form Validation Styles */
+.yith-pos-form input.error,
+.yith-pos-form select.error {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
+}
+
+.yith-pos-form .error-message {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+/* Loading Button States */
+.yith-pos-form button.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.yith-pos-form button.loading::after {
+    content: "";
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Fullscreen Mode Styles */
+body:-webkit-full-screen {
+    background: #fff;
+}
+
+body:-moz-full-screen {
+    background: #fff;
+}
+
+body:fullscreen {
+    background: #fff;
+}
+
+/* Print Styles for Receipts */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .pos-receipt,
+    .pos-receipt * {
+        visibility: visible;
+    }
+    
+    .pos-receipt {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    
+    /* Hide unnecessary elements when printing */
+    .pos-header,
+    .pos-footer,
+    .pos-navigation,
+    button,
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* High DPI / Retina Display Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .pos-logo img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Dark Mode Support (if needed) */
+@media (prefers-color-scheme: dark) {
+    .pos-theme-dark-mode .yith-pos-form-wrap {
+        background: rgba(33, 37, 41, 0.95) !important;
+        color: #f8f9fa;
+    }
+    
+    .pos-theme-dark-mode .yith-pos-form-row input,
+    .pos-theme-dark-mode .yith-pos-form-row select {
+        background: #495057;
+        border-color: #6c757d;
+        color: #f8f9fa;
+    }
+    
+    .pos-theme-dark-mode .float-label {
+        color: #adb5bd;
+        background: #495057;
+    }
+}
+
+/* Accessibility Improvements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus States for Keyboard Navigation */
+.yith-pos-form input:focus,
+.yith-pos-form select:focus,
+.yith-pos-form button:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #667eea;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10001;
+    font-size: 14px;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Ultra-wide Screen Support */
+@media (min-width: 1920px) {
+    .yith-pos-form-wrap {
+        max-width: 480px;
+    }
+}
+
+/* Small Screen Improvements */
+@media (max-width: 480px) {
+    .yith-pos-form-wrap {
+        margin: 0.5rem;
+        padding: 1.5rem !important;
+    }
+    
+    .yith-pos-form-wrap h1 {
+        font-size: 1.4rem;
+    }
+    
+    .pos-message {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        transform: translateY(-100%);
+    }
+    
+    .pos-message.show {
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,51 @@
+/* === Plugins Upgrader === */
+
+/* Hide license banner */
+.yith-plugin-upgrade-licence-banner {
+    display: none !important;
+}
+
+/* Hide license activation panel messages */
+.yith-licences-panel-list p {
+    display: none !important;
+}
+
+/* Hide license reminder messages */
+div[data-license-message],
+.license-reminder-text,
+.yith-licence-where-find-these {
+    display: none !important;
+}
+
+/* Hide any admin menu links to license activation */
+a[href*="yith_plugins_activation"],
+a[href*="yith_plugin_upgrade"],
+.yith-license-activation-link {
+    display: none !important;
+}
+
+/* Hide license count bubbles in admin menu */
+#yith-licence-to-activate-count {
+    display: none !important;
+}
+
+.yit-plugin-changelog-wrapper {
+    display: none;
+}
+
+.yit-plugin-changelog-title {
+    text-transform: uppercase;
+}
+
+.yit-plugin-changelog {
+    height     : calc(100% - 15px);
+    width      : calc(100% - 15px);
+    overflow-x : hidden;
+    overflow-y : auto;
+    z-index    : 999;
+    background: #fcfcfc;
+}
+
+.yith-updating:before{
+    animation: rotation 2s infinite linear;
+}

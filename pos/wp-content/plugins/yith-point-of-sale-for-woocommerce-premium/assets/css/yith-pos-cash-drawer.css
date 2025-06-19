@@ -1,0 +1,276 @@
+/**
+ * YITH POS Cash Drawer Styles
+ *
+ * Styles for cash drawer functionality in the POS interface.
+ *
+ * @package YITH\POS\Assets
+ * @version 1.0.0
+ */
+
+/* Cash drawer button styling */
+.yith-pos-open-drawer-btn {
+    background: #0073aa;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.3;
+    transition: background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.yith-pos-open-drawer-btn:hover {
+    background: #005a87;
+    color: #fff;
+}
+
+.yith-pos-open-drawer-btn:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+.yith-pos-open-drawer-btn:active {
+    background: #004a6f;
+}
+
+.yith-pos-open-drawer-btn .dashicons {
+    margin-right: 5px;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Button variations */
+.yith-pos-open-drawer-btn.small {
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.yith-pos-open-drawer-btn.large {
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+.yith-pos-open-drawer-btn.icon-only {
+    padding: 8px;
+    min-width: 32px;
+    justify-content: center;
+}
+
+.yith-pos-open-drawer-btn.icon-only .dashicons {
+    margin: 0;
+}
+
+/* Integration with existing POS styles */
+.yith-pos-order-receipt-print-control .yith-pos-open-drawer-btn {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.pos-header__actions .yith-pos-open-drawer-btn {
+    margin-left: 10px;
+}
+
+.yith-pos-register-actions .yith-pos-open-drawer-btn {
+    margin: 0 5px;
+}
+
+/* Receipt print controls integration */
+.yith-pos-order-receipt-print-control__drawer-control {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.yith-pos-order-receipt-print-control__drawer-control .yith-pos-open-drawer-btn {
+    background: #28a745;
+    border-color: #28a745;
+}
+
+.yith-pos-order-receipt-print-control__drawer-control .yith-pos-open-drawer-btn:hover {
+    background: #218838;
+    border-color: #218838;
+}
+
+/* Notification styles */
+.yith-pos-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+
+.yith-pos-notification-success {
+    background: #28a745;
+}
+
+.yith-pos-notification-error {
+    background: #dc3545;
+}
+
+.yith-pos-notification-info {
+    background: #17a2b8;
+}
+
+.yith-pos-notification-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+/* Animation for notifications */
+.yith-pos-notification {
+    animation: slideInFromRight 0.3s ease-out;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Cash drawer settings page styles */
+.yith-pos-cash-drawer-settings {
+    max-width: 800px;
+}
+
+.yith-pos-cash-drawer-settings .form-table th {
+    width: 200px;
+}
+
+.yith-pos-cash-drawer-settings .esc-pos-command {
+    font-family: monospace;
+    background: #f1f1f1;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.yith-pos-cash-drawer-settings .test-section {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #e1e1e1;
+    margin-top: 20px;
+}
+
+.yith-pos-cash-drawer-settings .test-section h3 {
+    margin-top: 0;
+    color: #444;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .yith-pos-open-drawer-btn {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+    
+    .pos-header__actions .yith-pos-open-drawer-btn {
+        margin: 5px 0;
+        display: block;
+        width: 100%;
+    }
+    
+    .yith-pos-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+/* Print styles - hide cash drawer controls when printing */
+@media print {
+    .yith-pos-open-drawer-btn,
+    .yith-pos-notification,
+    .yith-pos-order-receipt-print-control__drawer-control {
+        display: none !important;
+    }
+}
+
+/* Loading state for cash drawer button */
+.yith-pos-open-drawer-btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.yith-pos-open-drawer-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid transparent;
+    border-top: 2px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Integration with existing YITH POS themes */
+.yith-pos .yith-pos-open-drawer-btn {
+    font-family: inherit;
+}
+
+/* Dark theme support */
+.yith-pos-dark-theme .yith-pos-open-drawer-btn {
+    background: #2c3e50;
+    color: #ecf0f1;
+}
+
+.yith-pos-dark-theme .yith-pos-open-drawer-btn:hover {
+    background: #34495e;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .yith-pos-open-drawer-btn {
+        border: 2px solid #000;
+        background: #000;
+        color: #fff;
+    }
+    
+    .yith-pos-open-drawer-btn:hover {
+        background: #fff;
+        color: #000;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .yith-pos-open-drawer-btn,
+    .yith-pos-notification {
+        transition: none;
+        animation: none;
+    }
+}

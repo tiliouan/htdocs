@@ -1,0 +1,214 @@
+/*
+Theme Name: POS Theme
+Description: A minimal WordPress theme designed specifically for YITH Point of Sale for WooCommerce plugin. This theme provides a clean, distraction-free interface focused entirely on POS operations.
+Version: 1.0.0
+Author: POS Developer
+Text Domain: pos-theme
+*/
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Hide WordPress admin bar for POS users */
+body.yith-pos-page #wpadminbar {
+    display: none !important;
+}
+
+body.yith-pos-page {
+    margin-top: 0 !important;
+}
+
+/* Main Container */
+.pos-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Header for non-POS pages */
+.pos-header {
+    background: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: none; /* Hidden by default, only show when needed */
+}
+
+.pos-header.show {
+    display: block;
+}
+
+.pos-header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pos-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+/* Main Content */
+.pos-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* POS Root Element - Full Screen */
+#yith-pos-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: #fff;
+}
+
+/* Login/Register Selection Page */
+.pos-login-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.pos-login-box {
+    background: #fff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Error Pages */
+.pos-error {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.pos-error-content {
+    background: #fff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 500px;
+}
+
+.pos-error h1 {
+    font-size: 2rem;
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.pos-error p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.pos-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #667eea;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.pos-button:hover {
+    background: #5a67d8;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pos-login-box,
+    .pos-error-content {
+        margin: 1rem;
+        padding: 2rem;
+    }
+}
+
+/* Hide default WordPress elements */
+.pos-only-mode {
+    background: #f8f9fa !important;
+}
+
+.pos-only-mode .pos-header {
+    display: none !important;
+}
+
+.pos-only-mode footer {
+    display: none !important;
+}
+
+/* Full screen POS mode */
+body.yith-pos-page {
+    overflow: hidden;
+}
+
+/* POS Login Form Styling */
+#yith-pos-store-register-form {
+    background: transparent;
+}
+
+.yith-pos-form-wrap {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 3rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Hide unnecessary elements in POS mode */
+body.yith-pos-page .pos-header,
+body.yith-pos-page .pos-footer {
+    display: none !important;
+}
+
+/* Make sure POS content takes full height */
+body.yith-pos-page .pos-container {
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Admin notice fixes */
+.update-nag,
+.notice,
+.error {
+    display: none !important;
+}
+
+body.yith-pos-page .update-nag,
+body.yith-pos-page .notice,
+body.yith-pos-page .error {
+    display: none !important;
+}
